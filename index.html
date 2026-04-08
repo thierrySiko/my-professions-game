@@ -14,22 +14,26 @@
       gtag('config', 'UA-158854369-41');
     </script>
 
-    <!--<style>
+    <style>
         * { padding: 0; margin: 0; box-sizing: border-box; }
+
         html, body {
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background: #000;
-            touch-action: manipulation;
+            background: #4FD1AF;
         }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         canvas {
             display: block;
-            margin: 0 auto;
         }
-    </style>-->
-
-    <style>* { padding: 0; margin: 0; }</style>
+    </style>
 
     <script src="js/phaser.min.js"></script>
 </head>
@@ -264,8 +268,6 @@
 		game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		game.scale.pageAlignHorizontally = true;
 		game.scale.pageAlignVertically = true;
-		game.scale.forceOrientation(false, true);
-		game.scale.refresh();
 		game.stage.backgroundColor = '#4FD1AF';
 
 		game.load.image('fondWin', 'medias/img/image/fondWin1.jpg');
@@ -612,7 +614,7 @@
 		text.visible=false;
 		//fondWin= game.add.sprite(0, 0, 'fondWin');
 		//fondWin.visible=false;
-		copyText = game.add.text(650, 560, 'By SIKO Thierry', fontSmall);
+		copyText = game.add.text(game.world.width - 150, game.world.height - 30, 'By SIKO Thierry', fontSmall);
 
 		level1 = game.add.sprite(game.world.width/2, game.world.height*0.75, 'level1');
 		level1.anchor.set(0.5);
