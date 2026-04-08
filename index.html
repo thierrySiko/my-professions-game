@@ -1582,7 +1582,16 @@
 				lostButton.anchor.set(0.5);
 				lostButton.visible=true;
 				game.time.events.remove(timerEvents);
-				finalTimeText= game.add.text(100, game.world.height-50,Time+'s', textStyle1);
+				//finalTimeText= game.add.text(100, game.world.height-50,Time+'s', textStyle1);
+				var minutes = Math.floor(Time / 60);
+                var seconds = Time % 60;
+
+                var display =
+                    (minutes < 10 ? "0" : "") + minutes + ":" +
+                    (seconds < 10 ? "0" : "") + seconds;
+
+                finalTimeText = game.add.text(100, game.world.height-50, display, textStyle1);
+
 				timeIcon1=game.add.sprite(60, game.world.height-55,'timeIcon1');
 				finalScoreText=game.add.text(game.world.width-50, game.world.height-50,score, textStyle1);
 				scoreIcon1=game.add.sprite(game.world.width-100, game.world.height-50,'score1');
@@ -1676,7 +1685,15 @@
 	  	levelText.visible=false;
 
 	  	game.time.events.remove(timerEvents);
-		finalTimeText= game.add.text(100, game.world.height-50,Time+'s', textStyle1);
+		//finalTimeText= game.add.text(100, game.world.height-50,Time+'s', textStyle1);
+		var minutes = Math.floor(Time / 60);
+        var seconds = Time % 60;
+
+        var display =
+            (minutes < 10 ? "0" : "") + minutes + ":" +
+            (seconds < 10 ? "0" : "") + seconds;
+
+        finalTimeText = game.add.text(100, game.world.height-50, display, textStyle1);
 		timeIcon1=game.add.sprite(60, game.world.height-55,'timeIcon1');
 		finalScoreText=game.add.text(game.world.width-50, game.world.height-50,score, textStyle1);
 		scoreIcon1=game.add.sprite(game.world.width-100, game.world.height-50,'score1');
@@ -1810,12 +1827,22 @@
 		
 		location.reload();
 	}
+
 	function updateTime() {
 
-    Time++;
+        Time++;
 
-    text.setText(Time+'s');
-	}
+        var minutes = Math.floor(Time / 60);
+        var seconds = Time % 60;
+
+        // format 00:00
+        var display =
+            (minutes < 10 ? "0" : "") + minutes + ":" +
+            (seconds < 10 ? "0" : "") + seconds;
+
+        text.setText(display);
+    }
+
 	function nextLevel(){
 		if(level==1){
 			level1.visible=false;
